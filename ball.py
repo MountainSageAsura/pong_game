@@ -5,6 +5,8 @@ BALL_SIZE_MULT = 1
 class Ball(Turtle):
     def __init__(self):
         super().__init__()
+        self.x_move = 10
+        self.y_move = 10
         self.create_ball()
 
     def create_ball(self):
@@ -16,7 +18,9 @@ class Ball(Turtle):
         self.setheading(0)
 
     def move(self):
-        new_x = self.xcor() + 10
-        new_y = self.xcor() + 10
-        if self.ycor() <= 325:
-            self.goto(new_x, new_y)
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
+        self.goto(new_x, new_y)
+
+    def bounce(self):
+        self.y_move *= -1
